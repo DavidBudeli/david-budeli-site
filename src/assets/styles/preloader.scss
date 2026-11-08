@@ -1,0 +1,62 @@
+.preloader {
+  position: fixed;
+  z-index: var(--z-index-preloader);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-background-400);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+
+  &-logo {
+    width: 132px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    transition:
+      transform 0.2s var(--ease-power2-in),
+      opacity 0.2s var(--ease-power2-in);
+  }
+
+  &-image {
+    width: 112px;
+    height: auto;
+    filter: drop-shadow(0 0 28px rgba(54, 220, 208, 0.25));
+  }
+
+  &-track {
+    width: 100%;
+    height: 3px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+  }
+
+  &-rect {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-cyan-500), var(--color-cyan-400));
+    transform-origin: left center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &-hidden {
+    opacity: 0;
+    pointer-events: none !important;
+
+    * {
+      pointer-events: none !important;
+    }
+
+    .preloader-logo {
+      transform: scale(0.4);
+      opacity: 0;
+    }
+  }
+}

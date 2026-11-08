@@ -1,82 +1,38 @@
-# David Budeli — Portfólio
+# David Budeli — Portfolio 3D
 
-Portfólio bilíngue de David Budeli para `davidbudeli.com`, com identidade DB, apresentação profissional, competências, cases e contato direto pelo WhatsApp.
-
-## Stack
-
-- Next.js App Router
-- React
-- Styled Components
-- GSAP e ScrollTrigger
-- React Three Fiber / Three.js
+Portfólio bilíngue (português e inglês) de David Budeli. A experiência combina uma apresentação 3D interativa com cases reais de produto, inteligência artificial, automação, performance e conversão.
 
 ## Scripts
 
-```bash
-npm run dev
-npm run build
-npm start
-```
+| Comando | Descrição |
+| --- | --- |
+| `npm run dev` | Inicia o ambiente local na porta 3000 |
+| `npm run build` | Valida TypeScript e gera a versão de produção em `dist/` |
+| `npm run preview` | Pré-visualiza a versão de produção |
+| `npm start` | Serve a versão de produção na porta 3000 |
+| `npm run typecheck` | Executa somente a validação TypeScript |
 
-Scripts de runtime:
+## Conteúdo
 
-```json
-{
-  "dev": "next dev",
-  "build": "next build",
-  "start": "next start"
-}
-```
+- Projetos: `src/content/projects/{pt,en}/<slug>.ts`
+- Dados dos cases: `src/content/projects/data.ts`
+- Cards da listagem: `src/content/projects/previews/`
+- Traduções: `src/i18n/messages/namespaces/common/`
 
-## Desenvolvimento
+## Stack
 
-```bash
-npm install
-npm run dev
-```
+Vue 3, TypeScript, Vite, GSAP, Lenis, Three.js, Howler e GLSL.
 
-Acesse `http://localhost:3000`.
+## Credits & Attribution
 
-## Validacao de producao
+This adaptation was produced for David Budeli. The original visual concept, design, and substantial source code were created by David Heckhoff.
 
-```bash
-npm install
-npm run build
-npm start
-```
+Attribution to the original author must remain visible in derivative works, including:
 
-## Deploy na Hostinger
+- credit comments in the source code;
+- this attribution section in the README;
+- the visible reference in the website footer.
 
-O deploy de producao deve ser feito pela Hostinger Node.js Hosting usando a integracao com GitHub.
+Original portfolio: https://david-hckh.com
 
-Guia completo: [`HOSTINGER_DEPLOY.md`](./HOSTINGER_DEPLOY.md)
-
-Configuracao esperada:
-
-- Repository: `https://github.com/DavidBudeli/david-budeli-site`
-- Branch: `main`
-- Install command: `npm install`
-- Build command: `npm run build`
-- Start command: `npm start`
-- Domain: `davidbudeli.com`
-
-## Variaveis de ambiente
-
-Nenhuma variavel de ambiente e obrigatoria para a versao atual.
-
-## Conteudo
-
-Os dados principais de perfil, projetos, competências e contatos ficam em `src/data`.
-
-Links oficiais configurados:
-
-- GitHub: `https://github.com/DavidBudeli`
-- Instagram: `https://www.instagram.com/davidbudeli/`
-- Website: `https://davidbudeli.com`
-- Email: `mailto:consultoria@davidbudeli.com`
-- WhatsApp: `https://wa.me/5541999360874` com mensagem inicial preenchida nos botões de conversa
-
-## Idiomas e tema
-
-- Português e inglês
-- Tema escuro como experiência principal, com opção de tema claro
+Commercial reuse or redistribution of substantial portions of the original project without permission is prohibited. See `license.md`.
