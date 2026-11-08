@@ -6,7 +6,7 @@ export const projectIds = [
   "hyperpag",
   "everpersonal",
   "daniela-moura-studio",
-  "sabrina-pires-personal",
+  "gabriella-tsuruda",
   "cristiano-ronaldo-blog",
 ] as const;
 
