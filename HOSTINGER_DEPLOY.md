@@ -1,73 +1,43 @@
 # Deploy na Hostinger Node.js Hosting
 
-Guia para publicar o site David Budeli em `davidbudeli.com` usando a integracao GitHub da Hostinger Node.js Hosting.
+Guia para publicar o portfólio de David Budeli em `davidbudeli.com` usando a integração GitHub da Hostinger.
 
-## Repositorio
+## Repositório
 
 - GitHub: `https://github.com/DavidBudeli/david-budeli-site`
-- Branch: `main`
-- Framework: Next.js
+- Branch de produção: `main`
+- Framework: Vue 3 + Vite
 - Runtime: Node.js
 
-## Compatibilidade
+## Comandos de deploy
 
-O projeto nao usa dependencias exclusivas da Vercel, nao possui `vercel.json` e nao depende de variaveis `process.env` para renderizar.
-
-Scripts esperados:
-
-```json
-{
-  "dev": "next dev",
-  "build": "next build",
-  "start": "next start"
-}
+```text
+Install command: npm ci
+Build command: npm run build
+Start command: npm start
 ```
 
-## Variaveis de ambiente
+O script de produção serve o diretório `dist/`, respeita a variável `PORT` fornecida pela Hostinger e possui fallback para as rotas dos cases.
 
-Nenhuma variavel de ambiente e obrigatoria para o deploy atual.
+## Variáveis de ambiente
 
-## Configuracao na Hostinger
+Nenhuma variável é obrigatória. A atribuição ao autor do conceito original permanece visível por padrão.
 
-Na area Node.js Hosting da Hostinger:
+## Validação
 
-- Repository: `DavidBudeli/david-budeli-site`
-- Branch: `main`
-- Install command: `npm install`
-- Build command: `npm run build`
-- Start command: `npm start`
-- Port: usar a porta exposta pela Hostinger via ambiente, quando disponivel
-
-## Validacao antes de publicar
-
-Execute localmente ou no ambiente de build:
+Antes de publicar:
 
 ```bash
-npm install
+npm ci
 npm run build
 npm start
 ```
 
-Depois de iniciar, valide:
+Validar:
 
-- Hero carregando
-- Primeira rolagem com motion
-- Secao Sobre com retrato
-- Projetos clicaveis
-- Links oficiais
-- Botoes "Iniciar conversa" abrindo o WhatsApp com mensagem preenchida
-- Layout mobile sem overflow horizontal
-
-## Dominio
-
-Publicar em:
-
-```text
-davidbudeli.com
-```
-
-Configuracoes esperadas:
-
-- HTTPS/SSL ativo
-- `http://davidbudeli.com` redirecionando para `https://davidbudeli.com`
-- `www.davidbudeli.com` apontando corretamente para a aplicacao ou redirecionando para o dominio raiz
+- hero 3D e identidade DB;
+- português e inglês;
+- sete cases com páginas próprias;
+- WhatsApp com mensagem preenchida;
+- layout desktop e mobile;
+- domínio com HTTPS ativo.
