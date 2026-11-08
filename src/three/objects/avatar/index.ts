@@ -12,6 +12,7 @@ import headVertexShader from "../../shaders/avatar-head/vertex.glsl";
 import headFragmentShader from "../../shaders/avatar-head/fragment.glsl";
 import gsap from "gsap";
 import { aboutProgress } from "../../../animations/transitions/about";
+import { attachAvatarAccessories } from "./accessories";
 //import { avatarHologram } from "./hologram";
 
 import type { Material, Bone, Texture } from "three";
@@ -121,6 +122,7 @@ const setupMesh = () => {
   }
 
   mesh.rotation.z = 0;
+  attachAvatarAccessories(mesh, uniforms);
 
   transform.add(mesh);
 
