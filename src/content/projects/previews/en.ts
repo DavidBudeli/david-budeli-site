@@ -32,10 +32,10 @@ export default [
     description: "Premium brand experience",
   },
   {
-    title: "Sabrina Pires Personal",
-    slug: "sabrina-pires-personal",
-    thumbnail: "/cases/sabrina-pires-personal.png",
-    description: "Acquisition system",
+    title: "Gabriella Tsuruda",
+    slug: "gabriella-tsuruda",
+    thumbnail: "/cases/gabriella-tsuruda.png",
+    description: "Physis Therapeia",
   },
   {
     title: "Cristiano Ronaldo Blog",

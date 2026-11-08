@@ -63,16 +63,16 @@ export const projectContentPt = {
       { type: "list", props: { title: "Frentes do projeto", items: ["Direção visual e experiência premium", "Conteúdo orientado a confiança e posicionamento", "Jornada de conversão para novos atendimentos"], size: "md" } },
     ],
   }),
-  "sabrina-pires-personal": makeProject({
-    title: "Sabrina Pires Personal",
+  "gabriella-tsuruda": makeProject({
+    title: "Gabriella Tsuruda",
     theme: "dark",
-    tags: ["conversion", "performance", "automation"],
-    live: "https://sabrinapirespersonal.com.br",
+    tags: ["design", "conversion", "performance"],
+    live: "https://gabriellatsuruda.com.br/",
     description:
-      "Uma jornada direta, responsiva e orientada à ação para transformar interesse em conversa, diagnóstico e contratação.",
+      "Uma presença digital elegante para a Physis Therapeia, traduzindo escuta, cuidado e fisioterapia individualizada em uma experiência clara e acolhedora.",
     components: [
-      { type: "media", props: { type: "image", src: "/cases/sabrina-pires-personal.png", alt: "Site Sabrina Pires Personal", caption: "Sistema de aquisição" } },
-      { type: "list", props: { title: "Frentes do projeto", items: ["Experiência mobile e leitura objetiva", "Fluxo de contato conectado ao WhatsApp", "Arquitetura de conteúdo voltada à conversão"], size: "md" } },
+      { type: "media", props: { type: "image", src: "/cases/gabriella-tsuruda.png", alt: "Site Gabriella Tsuruda — Physis Therapeia", caption: "Physis Therapeia" } },
+      { type: "list", props: { title: "Frentes do projeto", items: ["Posicionamento de marca e direção visual", "Experiência responsiva com linguagem acolhedora", "Jornada de conversão para avaliações e atendimentos"], size: "md" } },
     ],
   }),
   "cristiano-ronaldo-blog": makeProject({
@@ -145,15 +145,15 @@ export const projectContentEn = {
       { type: "list", props: { title: "Project scope", items: ["Visual direction and premium experience", "Trust-led content and positioning", "Conversion journey for new appointments"], size: "md" } },
     ],
   }),
-  "sabrina-pires-personal": makeProject({
-    title: "Sabrina Pires Personal",
+  "gabriella-tsuruda": makeProject({
+    title: "Gabriella Tsuruda",
     theme: "dark",
-    tags: ["conversion", "performance", "automation"],
-    live: "https://sabrinapirespersonal.com.br",
-    description: "A responsive, action-oriented journey that turns interest into conversations, assessments, and clients.",
+    tags: ["design", "conversion", "performance"],
+    live: "https://gabriellatsuruda.com.br/",
+    description: "An elegant digital presence for Physis Therapeia, translating attentive care and personalized physiotherapy into a clear, welcoming experience.",
     components: [
-      { type: "media", props: { type: "image", src: "/cases/sabrina-pires-personal.png", alt: "Sabrina Pires Personal website", caption: "Acquisition system" } },
-      { type: "list", props: { title: "Project scope", items: ["Objective mobile-first experience", "Contact flow connected to WhatsApp", "Conversion-focused content architecture"], size: "md" } },
+      { type: "media", props: { type: "image", src: "/cases/gabriella-tsuruda.png", alt: "Gabriella Tsuruda — Physis Therapeia website", caption: "Physis Therapeia" } },
+      { type: "list", props: { title: "Project scope", items: ["Brand positioning and visual direction", "Responsive experience with a welcoming voice", "Conversion journey for assessments and appointments"], size: "md" } },
     ],
   }),
   "cristiano-ronaldo-blog": makeProject({
