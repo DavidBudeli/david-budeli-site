@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import Social from "./Social.vue";
-import Link from "./Link.vue";
-import Clickable from "./Clickable.vue";
 import LangSwitch from "./LangSwitch.vue";
 import NotchSection from "./NotchSection.vue";
 import { t } from "../i18n/utils/translate";
@@ -19,7 +17,6 @@ const handleBackToTop = () => {
 };
 
 const { withSocial = true } = defineProps<Props>();
-const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
 </script>
 
 <template>
@@ -41,40 +38,16 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
       <div class="footer-top">
         <Social v-if="withSocial" />
         <div class="footer-top-links">
+          <a
+            href="/licencas.html"
+            class="footer-license-link"
+            data-cursor="circle-white"
+            data-hoversound="hover"
+          >{{ t("licenses") }}</a>
           <LangSwitch />
         </div>
       </div>
-      <div class="footer-credits">
-        <div v-if="showAttribution" class="footer-credits-built">
-          <p>
-            {{ t("original-concept-by") }}
-          </p>
-          <Clickable renderAs="div">
-            <Link
-              href="https://david-hckh.com"
-              class="footer-link children-unclickable"
-              external
-              data-cursor="circle-white"
-              data-hoversound="hover"
-              >David Heckhoff</Link
-            >
-          </Clickable>
-        </div>
-        <div class="footer-credits-music">
-          <p>
-            {{ t("music-produced-by") }}
-          </p>
-          <Clickable renderAs="div">
-            <Link
-              href="https://soundcloud.com/hmsurf"
-              class="footer-link children-unclickable"
-              external
-              data-cursor="circle-white"
-              data-hoversound="hover"
-              >HM Surf</Link
-            >
-          </Clickable>
-        </div>
+      <div class="footer-copyright">
         <p>© {{ new Date().getFullYear() }} David Budeli</p>
       </div>
     </div>
@@ -149,11 +122,19 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
     }
   }
 
-  &-link {
-    font-weight: 700;
+  &-license-link {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-300);
+    text-underline-offset: 4px;
+
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
+      color: var(--color-text-400);
+    }
   }
 
-  &-credits {
+  &-copyright {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -162,13 +143,6 @@ const showAttribution = import.meta.env.VITE_SHOW_ATTRIBUTION !== "false";
     font-size: var(--font-size-sm);
     text-align: center;
 
-    &-built,
-    &-music {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: var(--space-xxs);
-    }
   }
 
   &-notch {

@@ -21,7 +21,7 @@ O script de produção serve o diretório `dist/`, respeita a variável `PORT` f
 
 ## Variáveis de ambiente
 
-Nenhuma variável é obrigatória. A atribuição ao autor do conceito original permanece visível por padrão.
+Nenhuma variável é obrigatória. Os avisos de autoria e música ficam na página pública `/licencas.html`, acessível pelo link Licenças no rodapé.
 
 ## Validação
 
