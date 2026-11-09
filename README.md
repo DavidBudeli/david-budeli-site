@@ -31,7 +31,7 @@ Attribution to the original author must remain visible in derivative works, incl
 
 - credit comments in the source code;
 - this attribution section in the README;
-- the visible reference in the website footer.
+- the public notices page at `/licencas.html`, accessible through the Licenças / Licenses link in the footer.
 
 Original portfolio: https://david-hckh.com
 
