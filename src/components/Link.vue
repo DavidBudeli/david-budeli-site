@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import { useRouter } from "../composables/useRouter";
+import { locale } from "../i18n/store";
+import { localizePath } from "../seo/pages";
 
 const attrs = useAttrs();
 const router = useRouter();
@@ -22,7 +24,7 @@ const resolvedTo = computed(() => {
     path = path.slice(0, -1);
   }
 
-  return path;
+  return props.external ? path : localizePath(path, locale.value ?? "pt");
 });
 
 const handleClick = (event: MouseEvent) => {
@@ -55,13 +57,7 @@ const handleClick = (event: MouseEvent) => {
     <slot></slot>
   </component>
 
-  <component
-    v-else
-    :is="props.renderAs || 'a'"
-    :href="resolvedTo"
-    @click="handleClick"
-    v-bind="attrs"
-  >
+  <component v-else :is="props.renderAs || 'a'" :href="resolvedTo" @click="handleClick" v-bind="attrs">
     <slot></slot>
   </component>
 </template>

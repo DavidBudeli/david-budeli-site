@@ -2,6 +2,7 @@
 import { computed, ref, onMounted, watchEffect } from "vue";
 import gsap from "gsap";
 import Notch from "../../../components/Notch.vue";
+import { getProjects } from "../../../seo/pages";
 
 const wrapperRef = ref<HTMLDivElement | null>(null);
 const mediaRef = ref<HTMLVideoElement | HTMLImageElement | null>(null);
@@ -17,6 +18,7 @@ export interface Props {
 }
 
 const props = defineProps<Props>();
+const dimensions = computed(() => getProjects("pt").find((project) => project.image === props.src));
 
 const wrapperClasses = computed(() => {
   return {
@@ -59,8 +61,11 @@ onMounted(async () => {
         v-if="props.type === 'image'"
         :src="props.src"
         :alt="props.alt"
-        loading="lazy"
-        fetchpriority="high"
+        :width="dimensions?.width ?? 1440"
+        :height="dimensions?.height ?? 1000"
+        :loading="props.index === 0 ? 'eager' : 'lazy'"
+        :fetchpriority="props.index === 0 ? 'high' : 'auto'"
+        decoding="async"
         class="project-media-image"
         ref="mediaRef"
       />

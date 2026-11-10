@@ -10,13 +10,14 @@ import { isFeatureEnabled } from "../../../utils/features";
 import { useAgent } from "../../../composables/useAgent";
 
 import type { MusicTrack } from "../types";
+import { stripLocale } from "../../../seo/pages";
 
 export const useMusic = () => {
   const { isTouch } = useAgent();
 
   const tickVolumes = () => {
     // If not on home route, always use base volume
-    if (path.value !== "/") {
+    if (stripLocale(path.value) !== "/") {
       musicTracks.luci.volume(BASE_VOLUMES.luci);
       musicTracks.about.volume(0);
       return;

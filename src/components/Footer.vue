@@ -25,9 +25,12 @@ const { withSocial = true } = defineProps<Props>();
     <div class="footer-content">
       <div
         class="footer-back-to-top"
+        role="button"
+        :aria-label="t('back-to-home')"
         tabindex="0"
         @click="handleBackToTop"
         @keydown.enter="handleBackToTop"
+        @keydown.space.prevent="handleBackToTop"
         data-cursor="circle-white"
         data-sound="click"
       >
@@ -38,17 +41,17 @@ const { withSocial = true } = defineProps<Props>();
       <div class="footer-top">
         <Social v-if="withSocial" />
         <div class="footer-top-links">
-          <a
-            href="/licencas.html"
-            class="footer-license-link"
-            data-cursor="circle-white"
-            data-hoversound="hover"
-          >{{ t("licenses") }}</a>
+          <a href="/licencas.html" class="footer-license-link" data-cursor="circle-white" data-hoversound="hover">{{
+            t("licenses")
+          }}</a>
           <LangSwitch />
         </div>
       </div>
       <div class="footer-copyright">
         <p>© {{ new Date().getFullYear() }} David Budeli</p>
+        <p>
+          {{ t("developed-by") }} <a href="https://hyperag.com.br" target="_blank" rel="noopener noreferrer">HyperAG</a>
+        </p>
       </div>
     </div>
   </footer>
@@ -142,7 +145,6 @@ const { withSocial = true } = defineProps<Props>();
     width: 100%;
     font-size: var(--font-size-sm);
     text-align: center;
-
   }
 
   &-notch {

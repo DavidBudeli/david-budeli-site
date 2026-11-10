@@ -6,7 +6,7 @@ export const preloaderVisible = ref(true);
 
 export const usePreloader = () => {
   const progress = ref(0);
-  const resourcesProgress = ref(0);
+  const resourcesProgress = ref(resources.isReady ? 1 : 0);
 
   onMounted(() => {
     resources.on("progress", (newProgress) => {
@@ -30,7 +30,7 @@ export const usePreloader = () => {
       if (newProgress === 1) {
         gsap.delayedCall(0.2, () => {
           document.body.classList.remove("is-loading");
-          preloader.classList.add("preloader-hidden");
+          preloader?.classList.add("preloader-hidden");
           preloaderVisible.value = false;
         });
       }

@@ -14,9 +14,12 @@ type ResourceType = Texture | GLTF;
 class Resources extends EventEmitter<{
   ready: void;
   progress: number;
+  error: Error;
 }> {
   toLoad = sources.length;
   isReady = false;
+  failed = false;
+  started = false;
   loaded = 0;
   items: Record<string, any> = {};
 
@@ -37,18 +40,33 @@ class Resources extends EventEmitter<{
   }
 
   startLoading() {
-    if (this.isReady) return;
+    if (this.started) return;
+    this.started = true;
+    const onError = () => {
+      this.failed = true;
+      this.emit("error", new Error("Unable to load an interactive resource"));
+    };
 
     for (const source of sources) {
       if (source.type === "gltfModel") {
-        this.loaders.gltfLoader.load(source.path, (file) => {
-          this.sourceLoaded(source, file);
-        });
+        this.loaders.gltfLoader.load(
+          source.path,
+          (file) => {
+            this.sourceLoaded(source, file);
+          },
+          undefined,
+          onError,
+        );
       } else if (source.type === "texture") {
-        this.loaders.textureLoader.load(source.path, (file: Texture) => {
-          file.colorSpace = SRGBColorSpace;
-          this.sourceLoaded(source, file);
-        });
+        this.loaders.textureLoader.load(
+          source.path,
+          (file: Texture) => {
+            file.colorSpace = SRGBColorSpace;
+            this.sourceLoaded(source, file);
+          },
+          undefined,
+          onError,
+        );
       }
     }
   }

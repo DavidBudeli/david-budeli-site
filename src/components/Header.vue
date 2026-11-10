@@ -81,7 +81,11 @@ const getInTouchClassNames = computed(() => {
         <ArrowRight class="header-back-icon" />
       </ButtonRound>
     </div>
-    <div
+    <button
+      type="button"
+      :aria-label="t('back-to-home')"
+      :tabindex="scrolledPastHeroVisible && projectId === null ? 0 : -1"
+      :aria-hidden="!scrolledPastHeroVisible || projectId !== null"
       :class="{
         'header-logo': true,
         'header-logo-isProjectPage': projectId !== null,
@@ -94,7 +98,7 @@ const getInTouchClassNames = computed(() => {
       data-cursor="circle-white"
     >
       <Logo class="header-logo-image" />
-    </div>
+    </button>
     <div class="header-right">
       <Button
         renderAs="a"
@@ -196,6 +200,9 @@ const getInTouchClassNames = computed(() => {
   }
 
   &-logo {
+    background: transparent;
+    border: 0;
+    padding: 0;
     cursor: pointer;
     display: flex;
     gap: var(--space-xs);

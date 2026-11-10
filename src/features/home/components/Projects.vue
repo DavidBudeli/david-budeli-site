@@ -31,13 +31,13 @@ onMounted(loadPreviews);
 </script>
 
 <template>
-  <div class="projects">
+  <section class="projects" aria-labelledby="projects-heading">
     <NotchSection class="projects-notch-start" />
     <NotchSection class="projects-notch-end" />
     <div class="grid">
       <div class="projects-title">
         <Banner class="projects-title-banner" :copy="t('selected')" size="sm" animated />
-        <h2 class="projects-title-copy">{{ t("projects") }}</h2>
+        <h2 id="projects-heading" class="projects-title-copy">{{ t("projects") }}</h2>
       </div>
     </div>
     <div class="grid">
@@ -46,7 +46,7 @@ onMounted(loadPreviews);
         <PreviewCard v-if="isFeatureEnabled('startProject')" />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
