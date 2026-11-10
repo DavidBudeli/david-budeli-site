@@ -14,11 +14,13 @@ import { useScroll } from "./composables/useScroll";
 import { projectVisible } from "./composables/useRouteObserver";
 import ProjectBackground from "./features/projects/components/ProjectBackground.vue";
 import { useClickSound } from "./features/sounds/composables/useClickSounds";
+import { useSeo } from "./composables/useSeo";
 //import { useHoverSound } from "./features/sounds/composables/useHoverSounds";
 
 const { isTransitioning } = useProjectTransition();
 
 useTranslations();
+useSeo();
 usePreloader();
 useMusic();
 useHowler();
@@ -30,12 +32,19 @@ const { isTouch } = useAgent();
 </script>
 
 <template>
+  <a class="skip-link" :href="projectVisible ? '#project-main' : '#home-main'">Ir para o conteúdo / Skip to content</a>
   <Header />
 
   <!-- main page -->
-  <div :class="{ 'home-wrapper-projectIsReady': projectVisible }">
+  <main
+    id="home-main"
+    tabindex="-1"
+    :aria-hidden="projectVisible"
+    :inert="projectVisible"
+    :class="{ 'home-wrapper-projectIsReady': projectVisible }"
+  >
     <Home />
-  </div>
+  </main>
 
   <!-- overlay page -->
   <ProjectBackground />
@@ -46,15 +55,35 @@ const { isTouch } = useAgent();
       'project-wrapper-transitioning': isTransitioning,
     }"
   >
-    <div class="project-content">
+    <main
+      id="project-main"
+      tabindex="-1"
+      class="project-content"
+      :aria-hidden="!projectVisible"
+      :inert="!projectVisible"
+    >
       <Project />
-    </div>
+    </main>
   </div>
 
   <Cursor v-if="!isTouch" />
 </template>
 
 <style lang="scss">
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1000;
+  transform: translateY(-200%);
+  padding: 12px 18px;
+  background: #05090a;
+  color: #36dcd0;
+  border: 1px solid currentColor;
+  &:focus {
+    transform: none;
+  }
+}
 .home-wrapper-projectIsReady {
   visibility: hidden;
   position: fixed;

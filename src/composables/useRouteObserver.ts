@@ -1,5 +1,7 @@
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { isTransitioning } from "./useProjectTransition";
+import { stripLocale } from "../seo/pages";
+import { projectIds } from "../content/projects";
 
 // -----------------------------------------------------------------------------
 // GLOBAL REACTIVE PATH
@@ -12,7 +14,8 @@ export const path = ref(typeof window !== "undefined" ? window.location.pathname
 // -----------------------------------------------------------------------------
 
 export const isProjectRoute = (path: string) => {
-  return path.match(/^\/project\/([^/]+)$/);
+  const match = stripLocale(path).match(/^\/project\/([^/]+)$/);
+  return match && projectIds.includes(match[1] as (typeof projectIds)[number]) ? match : null;
 };
 
 export const projectId = computed(() => {

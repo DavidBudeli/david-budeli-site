@@ -23,7 +23,7 @@ export default [
     title: "EverPersonal",
     slug: "everpersonal",
     thumbnail: "/cases/everpersonal.png",
-    description: "Relationship platform",
+    description: "Personal trainer website",
   },
   {
     title: "Daniela Moura Studio",

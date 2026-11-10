@@ -5,5 +5,6 @@ export const social = [
   },
   { url: "https://github.com/DavidBudeli", name: "github" },
   { url: "https://www.instagram.com/davidbudeli/", name: "instagram" },
+  { url: "https://www.linkedin.com/in/davidbudeli/", name: "linkedin" },
   { url: "mailto:consultoria@davidbudeli.com", name: "mail" },
-] as const satisfies { url: string; name: "whatsapp" | "mail" | "github" | "instagram" }[];
+] as const satisfies { url: string; name: "whatsapp" | "mail" | "github" | "instagram" | "linkedin" }[];

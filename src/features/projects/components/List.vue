@@ -16,7 +16,7 @@ const classes = computed(() => {
 
 <template>
   <div :class="classes">
-    <h3 v-if="props.title" class="list-title">{{ props.title }}</h3>
+    <h2 v-if="props.title" class="list-title">{{ props.title }}</h2>
     <ul class="list-items">
       <li v-for="item in props.items" :key="item" class="list-item" v-html="item"></li>
     </ul>

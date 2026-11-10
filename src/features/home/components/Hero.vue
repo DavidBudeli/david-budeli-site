@@ -15,7 +15,14 @@ import AppearingText from "../../../components/AppearingText.vue";
           <Banner class="hero-banner" :copy="t('job-title')" v-if="!preloaderVisible" animated />
         </div>
         <div class="hero-profile" v-if="!preloaderVisible">
-          <img src="/david-budeli-profile-2026.webp" alt="David Budeli" class="hero-profile-image" />
+          <img
+            src="/david-budeli-profile-2026.webp"
+            alt="David Budeli"
+            width="44"
+            height="44"
+            decoding="async"
+            class="hero-profile-image"
+          />
           <div class="hero-profile-copy">
             <strong>David Budeli</strong>
             <span>{{ t("location-value") }}</span>
@@ -172,8 +179,12 @@ import AppearingText from "../../../components/AppearingText.vue";
   }
 
   @keyframes profile-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
 </style>

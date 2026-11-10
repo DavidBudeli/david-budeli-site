@@ -3,12 +3,13 @@ import Link from "../../../components/Link.vue";
 import Notch from "../../../components/Notch.vue";
 import ArrowRightLong from "../../../components/icons/ArrowRightLong.vue";
 import gsap from "gsap";
-import { onMounted, onUnmounted, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ButtonRound from "../../../components/ButtonRound.vue";
 import { t } from "../../../i18n/utils/translate";
 import { social } from "../../../content/social";
 import Plus from "../../../components/icons/Plus.vue";
+import { getProjects } from "../../../seo/pages";
 
 import type { ProjectPreview } from "../../../content/types";
 
@@ -19,6 +20,7 @@ const imageRef = ref<HTMLImageElement | null>(null);
 const props = defineProps<{
   preview?: ProjectPreview;
 }>();
+const dimensions = computed(() => getProjects("pt").find((project) => project.slug === props.preview?.slug));
 
 onMounted(async () => {
   if (!wrapperRef.value || ScrollTrigger.isInViewport(wrapperRef.value)) {
@@ -58,7 +60,16 @@ onUnmounted(() => {
     <div class="preview-card-top" ref="wrapperRef">
       <div class="preview-card-image-wrapper">
         <div class="preview-card-image-container">
-          <img :src="props.preview.thumbnail" :alt="props.preview.title" class="preview-card-image" ref="imageRef" />
+          <img
+            :src="props.preview.thumbnail"
+            :alt="props.preview.title"
+            :width="dimensions?.width ?? 1440"
+            :height="dimensions?.height ?? 1000"
+            loading="lazy"
+            decoding="async"
+            class="preview-card-image"
+            ref="imageRef"
+          />
         </div>
       </div>
       <div class="preview-card-overlay">

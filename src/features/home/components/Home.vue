@@ -18,6 +18,7 @@ import { useAgent } from "../../../composables/useAgent";
 import { projectId, projectVisible } from "../../../composables/useRouteObserver";
 import { isTransitioning } from "../../../composables/useProjectTransition";
 import { renderer } from "../../../three/core/renderer";
+import Discovery from "./Discovery.vue";
 
 const introRef = ref<HTMLElement | null>(null);
 const stickyObserver = ref<IntersectionObserver | null>(null);
@@ -59,6 +60,7 @@ watchEffect((onInvalidate) => {
 
   const resizeObserver = new ResizeObserver(updateContactBottomOffset);
   resizeObserver.observe(contactRef.value as HTMLElement);
+  resizeObserver.observe(document.body);
 
   //const intersectionObserver = new IntersectionObserver(updateContactBottomOffset);
   //intersectionObserver.observe(contactRef.value as HTMLElement);
@@ -110,8 +112,8 @@ const handleProjectsLoaded = () => {
 
 watchEffect((onInvalidate) => {
   if (
-    projectsLoaded &&
-    threeInitialized &&
+    projectsLoaded.value &&
+    threeInitialized.value &&
     //(projectId.value === null || isTransitioning.value) &&
     !preloaderVisible.value
   ) {
@@ -148,7 +150,12 @@ watch(
           :class="{ 'intro-sticky-visible': isStickyVisible }"
           :style="{ '--contact-bottom': `${contactBottom}px` }"
         >
-          <canvas :class="['three-canvas', { 'three-canvas-contact': !isStickyVisible }]" ref="threeCanvasRef"></canvas>
+          <canvas
+            aria-hidden="true"
+            tabindex="-1"
+            :class="['three-canvas', { 'three-canvas-contact': !isStickyVisible }]"
+            ref="threeCanvasRef"
+          ></canvas>
           <div :class="{ 'intro-about-hidden': !isStickyVisible }">
             <About :spacer-ref="aboutSpacerRef" />
           </div>
@@ -161,6 +168,7 @@ watch(
       <div ref="contactRef" class="home-contact">
         <Contact id="contact" v-if="projectsLoaded" />
       </div>
+      <Discovery />
       <Footer :withSocial="false"></Footer>
     </Layout>
   </div>

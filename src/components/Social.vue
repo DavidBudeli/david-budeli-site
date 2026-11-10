@@ -3,6 +3,7 @@ import Github from "./icons/Github.vue";
 import Instagram from "./icons/Instagram.vue";
 import Mail from "./icons/Mail.vue";
 import Whatsapp from "./icons/Whatsapp.vue";
+import Linkedin from "./icons/Linkedin.vue";
 import Link from "./Link.vue";
 import { t } from "../i18n/utils/translate";
 import ButtonRound from "./ButtonRound.vue";
@@ -19,6 +20,7 @@ const icons = {
   whatsapp: Whatsapp,
   github: Github,
   instagram: Instagram,
+  linkedin: Linkedin,
 } as const;
 
 const getAriaLabel = (name: string) => `${t("go-to")} ${name.charAt(0).toUpperCase() + name.slice(1)}`;
